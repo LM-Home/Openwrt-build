@@ -9,6 +9,7 @@
 #git clone https://github.com/Lienol/openwrt-package.git package/lienol
 
 #luci-app-vssr
+rm -rf feeds/luci/applications/luci-app-vssr
 git clone https://github.com/jerrykuku/luci-app-vssr.git feeds/luci/applications/luci-app-vssr
 echo 'src-git helloworld https://github.com/fw876/helloworld' >> feeds.conf.default
 echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >> feeds.conf.default
@@ -143,38 +144,29 @@ sed -i '$i\mkdir \/tmp\/sdb1\nmount --bind \/mnt\/sdb1 \/tmp/sdb1\nhdparm -S 60 
 sed -i 's/解锁网易云灰色歌曲/网易解锁/g' feeds/luci/applications/luci-app-unblockmusic/po/zh-cn/unblockmusic.po
 
 #luci-app-dockerman
-#git clone https://github.com/lisaac/luci-app-dockerman.git 
-#mv luci-app-dockerman/applications/luci-app-dockerman feeds/luci/applications/luci-app-dockerman
-#rm -rf luci-app-dockerman
-#sed -i 's/+docker \\/#+docker \\/g' feeds/luci/applications/luci-app-dockerman/Makefile
-#sed -i 's/+dockerd \\/#+dockerd \\/g' feeds/luci/applications/luci-app-dockerman/Makefile
-sed -i 's/存储卷/存储/g' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-sed -i 's/msgstr "Docker"/msgstr "容器"/g' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#echo '' >>feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#echo 'msgid "This page displays all containers that have been created on the connected docker host."' >>feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#echo 'msgstr "Docker容器页面"' >>feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#echo '' >>feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#sed -i '/docker client is connected./{n;s/""/"Docker客户端连接数据概述"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#sed -i '/image can be downloaded from the configured registry./{n;s/""/"从Registry下载镜像."/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-sed -i '/Docker - Container (%s)/{n;s/""/"Docker-容器"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-sed -i '/Docker - Container/{n;s/""/"Docker-容器"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-sed -i '/Docker - Images/{n;s/""/"Docker-镜像"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-sed -i '/Docker - Network/{n;s/""/"Docker-网络"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-sed -i '/Docker - Networks/{n;s/""/"Docker-网络"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-sed -i '/Docker - Overview/{n;s/""/"Docker-概览"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-sed -i '/Docker - Volumes/{n;s/""/"Docker-存储"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#sed -i '/DockerMan is a simple docker manager client for LuCI/{n;s/""/"DockerMan的简易Docker管理器"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#sed -i '/"Error"/{n;s/""/"错误"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#sed -i '/"Fatal"/{n;s/""/"严重错误"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#sed -i '/Images overview/{n;s/""/"镜像概览"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#sed -i '/Import Image/{n;s/""/"导入镜像"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#sed -i '/It replaces the daemon registry mirrors with a new set of registry mirrors/{n;s/""/"更换仓库地址"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#sed -i '/Networks overview/{n;s/""/"网络概览"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#sed -i '/with which a container can be created/{n;s/""/"镜像管理页面."/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#sed -i '/On this page, the selected container can be managed./{n;s/""/"容器管理页面."/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#sed -i '/connected docker host/{n;s/""/"网络管理页面."/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#sed -i '/Volumes overview/{n;s/""/"存储概览"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
-#sed -i '/Warning/{n;s/""/"警告"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+rm -rf feeds/luci/applications/luci-app-dockerman
+git clone https://github.com/lisaac/luci-app-dockerman.git 
+mv luci-app-dockerman/applications/luci-app-dockerman    feeds/luci/applications/luci-app-dockerman
+sed -i 's/+docker \\/#+docker \\/g' feeds/luci/applications/luci-app-dockerman/Makefile
+sed -i 's/+dockerd \\/#+dockerd \\/g' feeds/luci/applications/luci-app-dockerman/Makefile
+echo '' >>feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+echo 'msgid "This page displays all containers that have been created on the connected docker host."' >>feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+echo 'msgstr "Docker容器页面"' >>feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+echo '' >>feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/docker client is connected./{n;s/""/"Docker客户端连接数据概述"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/image can be downloaded from the configured registry./{n;s/""/"从Registry下载镜像."/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/DockerMan is a simple docker manager client for LuCI/{n;s/""/"DockerMan的简易Docker管理器"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/"Error"/{n;s/""/"错误"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/"Fatal"/{n;s/""/"严重错误"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/Images overview/{n;s/""/"镜像概览"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/Import Image/{n;s/""/"导入镜像"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/It replaces the daemon registry mirrors with a new set of registry mirrors/{n;s/""/"更换仓库地址"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/Networks overview/{n;s/""/"网络概览"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/with which a container can be created/{n;s/""/"镜像管理页面."/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/On this page, the selected container can be managed./{n;s/""/"容器管理页面."/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/connected docker host/{n;s/""/"网络管理页面."/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/Volumes overview/{n;s/""/"存储概览"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/Warning/{n;s/""/"警告"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
 
 
 #luci-app-udpxy
@@ -190,8 +182,8 @@ sed -i 's/Nice increment/优先级增量/g' feeds/luci/applications/luci-app-udp
 sed -i 's/Multicast subscription renew/组播订阅续订/g' feeds/luci/applications/luci-app-udpxy/luasrc/model/cbi/udpxy.lua
 
 #luci-theme-argon 
-#rm -rf feeds/luci/themes/luci-theme-argon  
-#git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon 
+rm -rf feeds/luci/themes/luci-theme-argon  
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon 
 
 #kernel-graphics
 ver=$(cat target/linux/x86/Makefile | grep KERNEL_PATCHVER | cut -d '=' -f2)
