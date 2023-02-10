@@ -9,10 +9,8 @@
 #git clone https://github.com/Lienol/openwrt-package.git package/lienol
 
 #luci-app-vssr
-rm -rf feeds/luci/applications/luci-app-vssr
 git clone https://github.com/jerrykuku/luci-app-vssr.git feeds/luci/applications/luci-app-vssr
-echo 'src-git helloworld https://github.com/fw876/helloworld' >> feeds.conf.default
-echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >> feeds.conf.default
+git clone https://github.com/jerrykuku/lua-maxminddb.git feeds/luci/applications/lua-maxminddb
 sed -i 's/Hello World/翻墙工具/g' feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
 echo "" >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
 echo 'msgid "AlterId"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
@@ -41,6 +39,8 @@ echo 'msgstr "拥塞控制"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/v
 echo "" >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
 echo 'msgid "Shadowsocks New Version"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
 echo 'msgstr "Shadowsocks"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
+echo src-git helloworld https://github.com/fw876/helloworld >>feeds.conf.default
+echo src-git passwall https://github.com/xiaorouji/openwrt-passwall >>feeds.conf.default
 
 #luci-app-mwan3
 cat feeds/luci/applications/luci-app-mwan3/po/zh-cn/mwan3.po | sed ':label;N;s/\n/123456/;b label' >feeds/luci/applications/luci-app-mwan3/po/zh-cn/mwan3.po.tmp
@@ -125,7 +125,7 @@ sed -i 's/msgstr "FTP 服务器"/msgstr "FTP设置"/g' feeds/luci/applications/l
 sed -i 's/Turbo ACC 网络加速/网络加速/g' feeds/luci/applications/luci-app-turboacc/po/zh-cn/turboacc.po
 
 #luci-app-vlmcsd
-sed -i 's/KMS 服务器/微软激活/g'feeds/luci/applications/luci-app-vlmcsd/po/zh-cn/vlmcsd.po
+sed -i 's/KMS 服务器/微软激活/g' feeds/luci/applications/luci-app-vlmcsd/po/zh-cn/vlmcsd.po
 
 #luci-app-nft
 sed -i 's/NFS 管理/NFS管理/g' feeds/luci/applications/luci-app-nfs/po/zh-cn/nfs.po
@@ -146,15 +146,25 @@ sed -i 's/解锁网易云灰色歌曲/网易解锁/g' feeds/luci/applications/lu
 #luci-app-dockerman
 rm -rf feeds/luci/applications/luci-app-dockerman
 git clone https://github.com/lisaac/luci-app-dockerman.git 
-mv luci-app-dockerman/applications/luci-app-dockerman    feeds/luci/applications/luci-app-dockerman
+mv luci-app-dockerman/applications/luci-app-dockerman feeds/luci/applications/luci-app-dockerman
+rm -rf luci-app-dockerman
 sed -i 's/+docker \\/#+docker \\/g' feeds/luci/applications/luci-app-dockerman/Makefile
 sed -i 's/+dockerd \\/#+dockerd \\/g' feeds/luci/applications/luci-app-dockerman/Makefile
+sed -i 's/存储卷/存储/g' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i 's/msgstr "Docker"/msgstr "容器"/g' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
 echo '' >>feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
 echo 'msgid "This page displays all containers that have been created on the connected docker host."' >>feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
 echo 'msgstr "Docker容器页面"' >>feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
 echo '' >>feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
 sed -i '/docker client is connected./{n;s/""/"Docker客户端连接数据概述"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
 sed -i '/image can be downloaded from the configured registry./{n;s/""/"从Registry下载镜像."/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/Docker - Container (%s)/{n;s/""/"Docker-容器"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/Docker - Container/{n;s/""/"Docker-容器"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/Docker - Images/{n;s/""/"Docker-镜像"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/Docker - Network/{n;s/""/"Docker-网络"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/Docker - Networks/{n;s/""/"Docker-网络"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/Docker - Overview/{n;s/""/"Docker-概览"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
+sed -i '/Docker - Volumes/{n;s/""/"Docker-存储"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
 sed -i '/DockerMan is a simple docker manager client for LuCI/{n;s/""/"DockerMan的简易Docker管理器"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
 sed -i '/"Error"/{n;s/""/"错误"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
 sed -i '/"Fatal"/{n;s/""/"严重错误"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
@@ -203,6 +213,5 @@ echo '# DRM_I915_DEBUG_GUC is not set' >>target/linux/x86/config-${ver}
 echo '# DRM_I915_LOW_LEVEL_TRACEPOINTS is not set' >>target/linux/x86/config-${ver}
 echo '# DRM_I915_DEBUG_VBLANK_EVADE is not set' >>target/linux/x86/config-${ver}
 
-#更新feeds
 ./scripts/feeds update -a
-./scripts/feeds install -a 
+./scripts/feeds install -a
