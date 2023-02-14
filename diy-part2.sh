@@ -9,38 +9,47 @@
 #git clone https://github.com/Lienol/openwrt-package.git package/lienol
 
 #luci-app-vssr
-git clone https://github.com/jerrykuku/luci-app-vssr.git feeds/luci/applications/luci-app-vssr
-git clone https://github.com/jerrykuku/lua-maxminddb.git feeds/luci/applications/lua-maxminddb
-sed -i 's/Hello World/翻墙工具/g' feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo "" >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgid "AlterId"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgstr "额外ID"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo "" >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgid "VmessId (UUID)"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgstr "UUID"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo "" >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgid "Camouflage Type"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgstr "伪装方式"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo "" >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgid "Uplink Capacity"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgstr "上传速率"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo "" >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgid "Downlink Capacity"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgstr "下载速率"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo "" >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgid "Read Buffer Size"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgstr "读出缓存"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo "" >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgid "Write Buffer Size"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgstr "写入缓存"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo "" >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgid "Congestion"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgstr "拥塞控制"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo "" >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgid "Shadowsocks New Version"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo 'msgstr "Shadowsocks"' >> feeds/luci/applications/luci-app-vssr/po/zh-cn/vssr.po
-echo src-git helloworld https://github.com/fw876/helloworld >>feeds.conf.default
-echo src-git passwall https://github.com/xiaorouji/openwrt-passwall >>feeds.conf.default
+git clone https://github.com/jerrykuku/luci-app-vssr.git package/lean/luci-app-vssr
+git clone https://github.com/jerrykuku/lua-maxminddb.git package/lean/lua-maxminddb
+git clone https://github.com/xiaorouji/openwrt-passwall.git
+mv openwrt-passwall/shadowsocksr-libev package/lean/shadowsocksr-libev
+mv openwrt-passwall/simple-obfs package/lean/simple-obfs
+mv openwrt-passwall/xray-core package/lean/xray-core
+mv openwrt-passwall/trojan package/lean/trojan
+mv openwrt-passwall/ipt2socks package/lean/ipt2socks
+mv openwrt-passwall/xray-plugin package/lean/xray-plugin
+mv openwrt-passwall/hysteria package/lean/hysteria
+rm openwrt-passwall.git
+sed -i 's/Hello World/翻墙工具/g' package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo "" >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgid "AlterId"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgstr "额外ID"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo "" >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgid "VmessId (UUID)"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgstr "UUID"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo "" >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgid "Camouflage Type"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgstr "伪装方式"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo "" >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgid "Uplink Capacity"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgstr "上传速率"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo "" >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgid "Downlink Capacity"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgstr "下载速率"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo "" >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgid "Read Buffer Size"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgstr "读出缓存"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo "" >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgid "Write Buffer Size"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgstr "写入缓存"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo "" >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgid "Congestion"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgstr "拥塞控制"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo "" >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgid "Shadowsocks New Version"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+echo 'msgstr "Shadowsocks"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
+#echo src-git helloworld https://github.com/fw876/helloworld >>feeds.conf.default
+#echo src-git passwall https://github.com/xiaorouji/openwrt-passwall >>feeds.conf.default
 
 #luci-app-mwan3
 cat feeds/luci/applications/luci-app-mwan3/po/zh-cn/mwan3.po | sed ':label;N;s/\n/123456/;b label' >feeds/luci/applications/luci-app-mwan3/po/zh-cn/mwan3.po.tmp
@@ -212,6 +221,3 @@ echo '# DRM_I915_SW_FENCE_CHECK_DAG is not set' >>target/linux/x86/config-${ver}
 echo '# DRM_I915_DEBUG_GUC is not set' >>target/linux/x86/config-${ver}
 echo '# DRM_I915_LOW_LEVEL_TRACEPOINTS is not set' >>target/linux/x86/config-${ver}
 echo '# DRM_I915_DEBUG_VBLANK_EVADE is not set' >>target/linux/x86/config-${ver}
-
-./scripts/feeds update -a
-./scripts/feeds install -a
