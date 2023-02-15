@@ -20,6 +20,7 @@ mv openwrt-passwall/ipt2socks package/lean/ipt2socks
 mv openwrt-passwall/xray-plugin package/lean/xray-plugin
 mv openwrt-passwall/hysteria package/lean/hysteria
 rm openwrt-passwall.git
+sed -i 's/Hello World/翻墙工具/g' package/lean/luci-app-vssr/luasrc/controller/vssr.lua
 sed -i 's/Hello World/翻墙工具/g' package/lean/luci-app-vssr/po/zh-cn/vssr.po
 echo "" >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
 echo 'msgid "AlterId"' >> package/lean/luci-app-vssr/po/zh-cn/vssr.po
