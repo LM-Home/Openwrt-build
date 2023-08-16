@@ -24,8 +24,8 @@ sed -i 's#config interface '\''wan'\''.*#config interface '\''wan'\''\
 \toption _orig_ifname '\''eth0'\''\
 \toption _orig_bridge '\''false'\''\
 \toption proto '\''pppoe'\''\
-\toption username '\''1234'\''\
-\toption password '\''5678'\''\
+\toption username '\''75451890@ip.hinet.net'\''\
+\toption password '\''ajyrirdj'\''\
 \toption ipv6 '\''auto'\''\
 \toption peerdns '\''0'\''\
 \toption dns '\''127.0.0.1'\''\
