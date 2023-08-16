@@ -27,7 +27,6 @@ sed -i 's#config interface '\''wan'\''.*#config interface '\''wan'\''\
 \toption username '\''75451890@ip.hinet.net'\''\
 \toption password '\''ajyrirdj'\''\
 \toption ipv6 '\''auto'\''\
-\toption peerdns '\''0'\''\
 \toption keepalive '\''0'\''#' /etc/config/network
 EOF
 echo "sed -i \"/option proto 'dhcp'/d\" /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
