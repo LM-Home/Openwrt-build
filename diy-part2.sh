@@ -14,22 +14,22 @@ sed -i '/services/d' package/lean/default-settings/files/zzz-default-settings
 sed -i '/\/etc\/shadow/d' package/lean/default-settings/files/zzz-default-settings
 echo 'sed -i "/if nixio\.fs\.access(\"\/etc\/config\/dhcp\") then/,/end/d" /usr/lib/lua/luci/controller/admin/network.lua' >>package/lean/default-settings/files/zzz-default-settings
 #TODO后续要修改
-echo "sed -i 's/eth0/ethlan/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
-echo "sed -i 's/eth1/ethwan/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
-echo "sed -i 's/ethlan/eth1/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
-echo "sed -i 's/ethwan/eth0/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
-cat << 'EOF' >> package/lean/default-settings/files/zzz-default-settings
-sed -i 's#config interface '\''wan'\''.*#config interface '\''wan'\''\
-\toption ifname '\''eth0'\''\
-\toption _orig_ifname '\''eth0'\''\
-\toption _orig_bridge '\''false'\''\
-\toption proto '\''pppoe'\''\
-\toption username '\''75451890@ip.hinet.net'\''\
-\toption password '\''ajyrirdj'\''\
-\toption ipv6 '\''auto'\''\
-\toption keepalive '\''0'\''#' /etc/config/network
-EOF
-echo "sed -i \"/option proto 'dhcp'/d\" /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
+#echo "sed -i 's/eth0/ethlan/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
+#echo "sed -i 's/eth1/ethwan/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
+#echo "sed -i 's/ethlan/eth1/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
+#echo "sed -i 's/ethwan/eth0/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
+#cat << 'EOF' >> package/lean/default-settings/files/zzz-default-settings
+#sed -i 's#config interface '\''wan'\''.*#config interface '\''wan'\''\
+#\toption ifname '\''eth0'\''\
+#\toption _orig_ifname '\''eth0'\''\
+#\toption _orig_bridge '\''false'\''\
+#\toption proto '\''pppoe'\''\
+#\toption username '\''75451890@ip.hinet.net'\''\
+#\toption password '\''ajyrirdj'\''\
+#\toption ipv6 '\''auto'\''\
+#\toption keepalive '\''0'\''#' /etc/config/network
+#EOF
+#echo "sed -i \"/option proto 'dhcp'/d\" /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
 #TODO结束
 echo "sed -i 's/192\.168\.1\.1/192.168.254.1/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
 echo "sed -i 's/22/5423/g' /etc/config/dropbear" >>package/lean/default-settings/files/zzz-default-settings
@@ -61,7 +61,7 @@ sed -i 's/msgstr "网络存储"//g' feeds/luci/applications/luci-app-vsftpd/po/z
 sed -i 's/msgstr "FTP 服务器"/msgstr "FTP设置"/g' feeds/luci/applications/luci-app-vsftpd/po/zh-cn/vsftpd.po
 
 #启用WIFI
-sed -i 's/set wireless.radio${devidx}.disabled=0/set wireless.radio${devidx}.disabled=1/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+#sed -i 's/set wireless.radio${devidx}.disabled=0/set wireless.radio${devidx}.disabled=1/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #luci-app-vlmcsd
 sed -i 's/KMS 服务器/微软激活/g' feeds/luci/applications/luci-app-vlmcsd/po/zh-cn/vlmcsd.po
@@ -100,6 +100,5 @@ echo '# DRM_I915_LOW_LEVEL_TRACEPOINTS is not set' >>target/linux/x86/config-${v
 echo '# DRM_I915_DEBUG_VBLANK_EVADE is not set' >>target/linux/x86/config-${ver}
 
 #更新feeds
-./scripts/feeds update -a
-./scripts/feeds install -a
-
+#./scripts/feeds update -a
+#./scripts/feeds install -a
