@@ -13,28 +13,31 @@ sed -i '/exit 0/d' package/lean/default-settings/files/zzz-default-settings
 sed -i '/services/d' package/lean/default-settings/files/zzz-default-settings
 sed -i '/\/etc\/shadow/d' package/lean/default-settings/files/zzz-default-settings
 echo 'sed -i "/if nixio\.fs\.access(\"\/etc\/config\/dhcp\") then/,/end/d" /usr/lib/lua/luci/controller/admin/network.lua' >>package/lean/default-settings/files/zzz-default-settings
-#TODO后续要修改
 echo "sed -i 's/eth0/ethlan/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
 echo "sed -i 's/eth1/ethwan/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
 echo "sed -i 's/ethlan/wlan0/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
 echo "sed -i 's/ethwan/eth0/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
-
-
-cat << 'EOF' >> package/lean/default-settings/files/zzz-default-settings
-sed -i 's#config interface '\''wan'\''.*#config interface '\''wan'\''\
-\toption ifname '\''eth0'\''\
-\toption _orig_ifname '\''eth0'\''\
-\toption _orig_bridge '\''false'\''\
-\toption proto '\''pppoe'\''\
-\toption username '\''75451890@ip.hinet.net'\''\
-\toption password '\''ajyrirdj'\''\
-\toption ipv6 '\''auto'\''\
-\toption keepalive '\''0'\''#' /etc/config/network
-EOF
-echo "sed -i \"/option proto 'dhcp'/d\" /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
-
-#TODO结束
 echo "sed -i 's/192\.168\.1\.1/192.168.254.1/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
+cat << 'EOF' >> package/lean/default-settings/files/zzz-default-settings
+echo '' >> /etc/config/network
+echo "config interface 'wan'
+	option proto 'pppoe'
+	option ifname 'eth0'
+	option username '75451890@ip.hinet.net'
+	option password 'ajyrirdj'
+	option ipv6 'auto'
+	option keepalive '0'" >> /etc/config/network
+EOF
+cat << 'EOF' >> package/lean/default-settings/files/zzz-default-settings
+echo '' >> /etc/config/firewall
+echo "config rule
+	option target 'ACCEPT'
+	option src 'wan'
+	option proto 'tcp udp'
+	option name 'HTTP'
+	option dest_port '80'" >> /etc/config/firewall
+EOF
+
 echo "sed -i 's/22/5423/g' /etc/config/dropbear" >>package/lean/default-settings/files/zzz-default-settings
 echo "sed -i '/option Interface/d' /etc/config/dropbear" >>package/lean/default-settings/files/zzz-default-settings
 echo rm -f /etc/docker-init >>package/lean/default-settings/files/zzz-default-settings
