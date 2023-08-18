@@ -18,18 +18,8 @@ echo "sed -i 's/eth0/ethlan/g' /etc/config/network" >>package/lean/default-setti
 echo "sed -i 's/eth1/ethwan/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
 echo "sed -i 's/ethlan/wlan0/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
 echo "sed -i 's/ethwan/eth0/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
-cat << 'EOF' >> package/lean/default-settings/files/zzz-default-settings
-sed -i 's#config interface '\''wan'\''.*#config interface '\''wan'\''\
-\toption ifname '\''eth0'\''\
-\toption _orig_ifname '\''eth0'\''\
-\toption _orig_bridge '\''false'\''\
-\toption proto '\''pppoe'\''\
-\toption username '\''75451890@ip.hinet.net'\''\
-\toption password '\''ajyrirdj'\''\
-\toption ipv6 '\''auto'\''\
-\toption keepalive '\''0'\''#' /etc/config/network
-EOF
-echo 
+
+
 cat << 'EOF' >> package/lean/default-settings/files/zzz-default-settings
 echo '' >> /etc/config/network
 echo "config interface 'wan'
@@ -40,7 +30,7 @@ echo "config interface 'wan'
 	option ipv6 'auto'
 	option keepalive '0'" >> /etc/config/network
 EOF
-echo "sed -i \"/option proto 'dhcp'/d\" /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
+
 #TODO结束
 echo "sed -i 's/192\.168\.1\.1/192.168.254.1/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
 echo "sed -i 's/22/5423/g' /etc/config/dropbear" >>package/lean/default-settings/files/zzz-default-settings
