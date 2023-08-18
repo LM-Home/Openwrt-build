@@ -21,15 +21,17 @@ echo "sed -i 's/ethwan/eth0/g' /etc/config/network" >>package/lean/default-setti
 
 
 cat << 'EOF' >> package/lean/default-settings/files/zzz-default-settings
-echo '' >> /etc/config/network
-echo "config interface 'wan'
-	option proto 'pppoe'
-	option ifname 'eth0'
-	option username '75451890@ip.hinet.net'
-	option password 'ajyrirdj'
-	option ipv6 'auto'
-	option keepalive '0'" >> /etc/config/network
+sed -i 's#config interface '\''wan'\''.*#config interface '\''wan'\''\
+\toption ifname '\''eth0'\''\
+\toption _orig_ifname '\''eth0'\''\
+\toption _orig_bridge '\''false'\''\
+\toption proto '\''pppoe'\''\
+\toption username '\''75451890@ip.hinet.net'\''\
+\toption password '\''ajyrirdj'\''\
+\toption ipv6 '\''auto'\''\
+\toption keepalive '\''0'\''#' /etc/config/network
 EOF
+echo "sed -i \"/option proto 'dhcp'/d\" /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
 
 #TODO结束
 echo "sed -i 's/192\.168\.1\.1/192.168.254.1/g' /etc/config/network" >>package/lean/default-settings/files/zzz-default-settings
