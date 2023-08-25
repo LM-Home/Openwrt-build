@@ -83,10 +83,6 @@ sed -i '/Docker - Networks/{n;s/""/"Docker-网络"/g}' feeds/luci/applications/l
 sed -i '/Docker - Overview/{n;s/""/"Docker-概览"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
 sed -i '/Docker - Volumes/{n;s/""/"Docker-存储"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
 
-#luci-theme-argon 
-rm -rf feeds/luci/themes/luci-theme-argon  
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon 
-
 #kernel-graphics
 ver=$(cat target/linux/x86/Makefile | grep KERNEL_PATCHVER | cut -d '=' -f2)
 echo CONFIG_DRM=y >>target/linux/x86/config-${ver}
@@ -104,7 +100,3 @@ echo '# DRM_I915_SW_FENCE_CHECK_DAG is not set' >>target/linux/x86/config-${ver}
 echo '# DRM_I915_DEBUG_GUC is not set' >>target/linux/x86/config-${ver}
 echo '# DRM_I915_LOW_LEVEL_TRACEPOINTS is not set' >>target/linux/x86/config-${ver}
 echo '# DRM_I915_DEBUG_VBLANK_EVADE is not set' >>target/linux/x86/config-${ver}
-
-#更新feeds
-#./scripts/feeds update -a
-#./scripts/feeds install -a
