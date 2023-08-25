@@ -24,7 +24,7 @@ permissions:
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: 38595344c23bdaaec155925cc6e92f67481f189e
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   DIY_FEED_SH: diy-feed.sh
