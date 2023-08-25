@@ -1,4 +1,4 @@
-3865U-Coolsnowwolf/lede 编译
+FongMi-Coolsnowwolf/lede 编译
 
 源码：https://github.com/coolsnowwolf/lede
 
