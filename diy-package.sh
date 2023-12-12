@@ -83,6 +83,10 @@ sed -i '/Docker - Networks/{n;s/""/"Docker-网络"/g}' feeds/luci/applications/l
 sed -i '/Docker - Overview/{n;s/""/"Docker-概览"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
 sed -i '/Docker - Volumes/{n;s/""/"Docker-存储"/g}' feeds/luci/applications/luci-app-dockerman/po/zh-cn/dockerman.po
 
+#luci-theme-argon 
+rm -rf feeds/luci/themes/luci-theme-argon  
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon 
+
 #kernel-graphics
 ver=$(cat target/linux/x86/Makefile | grep KERNEL_PATCHVER | cut -d '=' -f2)
 echo CONFIG_DRM=y >>target/linux/x86/config-${ver}
@@ -91,16 +95,34 @@ echo CONFIG_DRM_I915_ALPHA_SUPPORT=y >>target/linux/x86/config-${ver}
 echo CONFIG_DRM_I915_CAPTURE_ERROR=y >>target/linux/x86/config-${ver}
 echo CONFIG_DRM_I915_COMPRESS_ERROR=y >>target/linux/x86/config-${ver}
 echo CONFIG_DRM_I915_USERPTR=y >>target/linux/x86/config-${ver}
-echo '# CONFIG_DRM_I915_ALPHA_SUPPORT is not set' >>target/linux/x86/config-${ver}
-echo '# CONFIG_DRM_I915_GVT is not set' >>target/linux/x86/config-${ver}
-echo '# DRM_I915_WERROR is not set' >>target/linux/x86/config-${ver}
-echo '# DRM_I915_DEBUG is not set' >>target/linux/x86/config-${ver}
-echo '# DRM_I915_SW_FENCE_DEBUG_OBJECTS is not set' >>target/linux/x86/config-${ver}
-echo '# DRM_I915_SW_FENCE_CHECK_DAG is not set' >>target/linux/x86/config-${ver}
-echo '# DRM_I915_DEBUG_GUC is not set' >>target/linux/x86/config-${ver}
-echo '# DRM_I915_LOW_LEVEL_TRACEPOINTS is not set' >>target/linux/x86/config-${ver}
-echo '# DRM_I915_DEBUG_VBLANK_EVADE is not set' >>target/linux/x86/config-${ver}
 
-#luci-theme-argon 
-rm -rf feeds/luci/themes/luci-theme-argon  
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon 
+echo CONFIG_APERTURE_HELPERS=y >>target/linux/x86/config-${ver}
+echo CONFIG_CC_NO_ARRAY_BOUNDS=y >>target/linux/x86/config-${ver}
+echo CONFIG_CGROUPS=y >>target/linux/x86/config-${ver}
+echo CONFIG_CGROUP_SCHED=y >>target/linux/x86/config-${ver}
+echo CONFIG_CGROUP_WRITEBACK=y >>target/linux/x86/config-${ver}
+echo CONFIG_COMPACT_UNEVICTABLE_DEFAULT=1 >>target/linux/x86/config-${ver}
+echo CONFIG_CONTEXT_TRACKING=y >>target/linux/x86/config-${ver}
+echo CONFIG_CONTEXT_TRACKING_IDLE=y >>target/linux/x86/config-${ver}
+echo CONFIG_CRYPTO_LIB_BLAKE2S_GENERIC=y >>target/linux/x86/config-${ver}
+echo CONFIG_CRYPTO_LIB_SHA1=y >>target/linux/x86/config-${ver}
+echo CONFIG_CRYPTO_LIB_UTILS=y >>target/linux/x86/config-${ver}
+echo CONFIG_FAIR_GROUP_SCHED=y >>target/linux/x86/config-${ver}
+echo CONFIG_FRAME_WARN=1024 >>target/linux/x86/config-${ver}
+echo CONFIG_GCC11_NO_ARRAY_BOUNDS=y >>target/linux/x86/config-${ver}
+echo CONFIG_GPIO_ACPI=y >>target/linux/x86/config-${ver}
+echo CONFIG_GPIO_CDEV=y >>target/linux/x86/config-${ver}
+echo CONFIG_HZ_PERIODIC=y >>target/linux/x86/config-${ver}
+echo CONFIG_MEMCG=y >>target/linux/x86/config-${ver}
+echo CONFIG_MEMCG_KMEM=y >>target/linux/x86/config-${ver}
+echo CONFIG_NET_PTP_CLASSIFY=y >>target/linux/x86/config-${ver}
+echo CONFIG_PAGE_COUNTER=y >>target/linux/x86/config-${ver}
+echo CONFIG_PARAVIRT=y >>target/linux/x86/config-${ver}
+echo CONFIG_PPS=y >>target/linux/x86/config-${ver}
+echo CONFIG_PTP_1588_CLOCK=y >>target/linux/x86/config-${ver}
+echo CONFIG_SCHED_AUTOGROUP=y >>target/linux/x86/config-${ver}
+echo CONFIG_SERIAL_MCTRL_GPIO=y >>target/linux/x86/config-${ver}
+echo CONFIG_SOFTIRQ_ON_OWN_STACK=y >>target/linux/x86/config-${ver}
+echo CONFIG_UCS2_STRING=y >>target/linux/x86/config-${ver}
+echo CONFIG_VMAP_PFN=y >>target/linux/x86/config-${ver}
+echo CONFIG_X86_HV_CALLBACK_VECTOR=y >>target/linux/x86/config-${ver}
